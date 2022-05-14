@@ -1,67 +1,67 @@
-import React from 'react'
-import { Form, Formik } from 'formik'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import CONSTANTS from '../../constants'
-import { getDataForContest } from '../../actions/actionCreator'
-import styles from './ContestForm.module.sass'
-import Spinner from '../Spinner/Spinner'
-import FormInput from '../FormInput/FormInput'
-import SelectInput from '../SelectInput/SelectInput'
-import FieldFileInput from '../InputComponents/FieldFileInput/FieldFileInput'
-import FormTextArea from '../InputComponents/FormTextArea/FormTextArea'
-import TryAgain from '../TryAgain/TryAgain'
-import Schems from '../../validators/validationSchems'
-import OptionalSelects from '../OptionalSelects/OptionalSelects'
+import React from 'react';
+import { Form, Formik } from 'formik';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import CONSTANTS from '../../constants';
+import { getDataForContest } from '../../actions/actionCreator';
+import styles from './ContestForm.module.sass';
+import Spinner from '../Spinner/Spinner';
+import FormInput from '../FormInput/FormInput';
+import SelectInput from '../SelectInput/SelectInput';
+import FieldFileInput from '../InputComponents/FieldFileInput/FieldFileInput';
+import FormTextArea from '../InputComponents/FormTextArea/FormTextArea';
+import TryAgain from '../TryAgain/TryAgain';
+import Schems from '../../validators/validationSchems';
+import OptionalSelects from '../OptionalSelects/OptionalSelects';
 
 const variableOptions = {
   [CONSTANTS.NAME_CONTEST]: {
     styleName: '',
-    typeOfName: ''
+    typeOfName: '',
   },
   [CONSTANTS.LOGO_CONTEST]: {
     nameVenture: '',
-    brandStyle: ''
+    brandStyle: '',
   },
   [CONSTANTS.TAGLINE_CONTEST]: {
     nameVenture: '',
-    typeOfTagline: ''
-  }
-}
+    typeOfTagline: '',
+  },
+};
 
 class ContestForm extends React.Component {
   getPreference = () => {
-    const { contestType } = this.props
+    const { contestType } = this.props;
     switch (contestType) {
       case CONSTANTS.NAME_CONTEST: {
         this.props.getData({
           characteristic1: 'nameStyle',
-          characteristic2: 'typeOfName'
-        })
-        break
+          characteristic2: 'typeOfName',
+        });
+        break;
       }
       case CONSTANTS.TAGLINE_CONTEST: {
-        this.props.getData({ characteristic1: 'typeOfTagline' })
-        break
+        this.props.getData({ characteristic1: 'typeOfTagline' });
+        break;
       }
       case CONSTANTS.LOGO_CONTEST: {
-        this.props.getData({ characteristic1: 'brandStyle' })
-        break
+        this.props.getData({ characteristic1: 'brandStyle' });
+        break;
       }
     }
-  }
+  };
 
   componentDidMount () {
-    this.getPreference()
+    this.getPreference();
   }
 
   render () {
-    const { isFetching, error } = this.props.dataForContest
+    const { isFetching, error } = this.props.dataForContest;
     if (error) {
-      return <TryAgain getData={this.getPreference} />
+      return <TryAgain getData={this.getPreference} />;
     }
     if (isFetching) {
-      return <Spinner />
+      return <Spinner />;
     }
     return (
       <>
@@ -74,7 +74,7 @@ class ContestForm extends React.Component {
               targetCustomer: '',
               file: '',
               ...variableOptions[this.props.contestType],
-              ...this.props.initialValues
+              ...this.props.initialValues,
             }}
             onSubmit={this.props.handleSubmit}
             validationSchema={Schems.ContestSchem}
@@ -91,7 +91,7 @@ class ContestForm extends React.Component {
                   classes={{
                     container: styles.componentInputContainer,
                     input: styles.input,
-                    warning: styles.warning
+                    warning: styles.warning,
                   }}
                 />
               </div>
@@ -102,7 +102,7 @@ class ContestForm extends React.Component {
                     inputContainer: styles.selectInputContainer,
                     inputHeader: styles.selectHeader,
                     selectInput: styles.select,
-                    warning: styles.warning
+                    warning: styles.warning,
                   }}
                   header='Describe industry associated with your venture'
                   optionsArray={this.props.dataForContest.data.industry}
@@ -119,7 +119,7 @@ class ContestForm extends React.Component {
                   classes={{
                     container: styles.componentInputContainer,
                     inputStyle: styles.textArea,
-                    warning: styles.warning
+                    warning: styles.warning,
                   }}
                 />
               </div>
@@ -134,7 +134,7 @@ class ContestForm extends React.Component {
                   classes={{
                     container: styles.componentInputContainer,
                     inputStyle: styles.textArea,
-                    warning: styles.warning
+                    warning: styles.warning,
                   }}
                 />
               </div>
@@ -146,7 +146,7 @@ class ContestForm extends React.Component {
                   labelClass: styles.label,
                   fileNameClass: styles.fileName,
                   fileInput: styles.fileInput,
-                  warning: styles.warning
+                  warning: styles.warning,
                 }}
                 type='file'
               />
@@ -159,23 +159,23 @@ class ContestForm extends React.Component {
           </Formik>
         </div>
       </>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { isEditContest } = state.contestByIdStore
+  const { isEditContest } = state.contestByIdStore;
   return {
     isEditContest,
     contestStore: state.contestStore,
     dataForContest: state.dataForContest,
-    initialValues: ownProps.defaultData
-  }
-}
+    initialValues: ownProps.defaultData,
+  };
+};
 const mapDispatchToProps = dispatch => ({
-  getData: data => dispatch(getDataForContest(data))
-})
+  getData: data => dispatch(getDataForContest(data)),
+});
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ContestForm)
-)
+);

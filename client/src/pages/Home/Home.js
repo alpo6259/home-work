@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import Header from '../../components/Header/Header'
-import CONSTANTS from '../../constants'
-import SlideBar from '../../components/SlideBar/SlideBar'
-import Footer from '../../components/Footer/Footer'
-import styles from './Home.module.sass'
-import carouselConstants from '../../carouselConstants'
-import Spinner from '../../components/Spinner/Spinner'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Header from '../../components/Header/Header';
+import CONSTANTS from '../../constants';
+import SlideBar from '../../components/SlideBar/SlideBar';
+import Footer from '../../components/Footer/Footer';
+import styles from './Home.module.sass';
+import carouselConstants from '../../carouselConstants';
+import Spinner from '../../components/Spinner/Spinner';
 
 const Home = props => {
-  const [index, setIndex] = useState(0)
-  const [styleName, setStyle] = useState(styles.headline__static)
-  let timeout
+  const [index, setIndex] = useState(0);
+  const [styleName, setStyle] = useState(styles.headline__static);
+  let timeout;
 
   useEffect(() => {
     timeout = setInterval(() => {
-      setIndex(index + 1)
-      setStyle(styles.headline__isloading)
-    }, 3000)
+      setIndex(index + 1);
+      setStyle(styles.headline__isloading);
+    }, 3000);
     return () => {
-      setStyle(styles.headline__static)
-      clearInterval(timeout)
-    }
-  })
+      setStyle(styles.headline__static);
+      clearInterval(timeout);
+    };
+  });
 
-  const { isFetching } = props
+  const { isFetching } = props;
   const text =
     CONSTANTS.HEADER_ANIMATION_TEXT[
       index % CONSTANTS.HEADER_ANIMATION_TEXT.length
-    ]
+    ];
   return (
     <>
       <Header />
@@ -262,12 +262,12 @@ const Home = props => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
-  const { isFetching } = state.userStore
-  return { isFetching }
-}
+  const { isFetching } = state.userStore;
+  return { isFetching };
+};
 
-export default connect(mapStateToProps, null)(Home)
+export default connect(mapStateToProps, null)(Home);

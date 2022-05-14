@@ -1,6 +1,6 @@
-const env = process.env.NODE_ENV || 'development'
-const serverIP = 'localhost'
-const serverPort = 5000
+const env = process.env.NODE_ENV || 'development';
+const serverIP = 'localhost';
+const serverPort = 5000;
 export default {
   CUSTOMER: 'customer',
   CREATOR: 'creator',
@@ -39,12 +39,12 @@ export default {
     'a Business',
     'an App',
     'a Product',
-    'a Startup'
+    'a Startup',
   ],
   FooterItems: [
     {
       title: 'SQUADHELP',
-      items: ['About', 'Contact', 'How It Works?', 'Testimonials', 'Our Work']
+      items: ['About', 'Contact', 'How It Works?', 'Testimonials', 'Our Work'],
     },
     {
       title: 'RESOURCES',
@@ -56,8 +56,8 @@ export default {
         'Blog',
         'Download eBook',
         'Pricing',
-        'Help & FAQs'
-      ]
+        'Help & FAQs',
+      ],
     },
     {
       title: 'OUR SERVICES',
@@ -69,12 +69,12 @@ export default {
         'Creative Owned Names For Sale',
         'Audience Testing',
         'Trademark Research & Filling',
-        'Managed Agency Service'
-      ]
+        'Managed Agency Service',
+      ],
     },
     {
       title: 'LEGAL',
-      items: ['Terms of Service', 'Privacy Policy', 'Cookie Policy']
-    }
-  ]
-}
+      items: ['Terms of Service', 'Privacy Policy', 'Cookie Policy'],
+    },
+  ],
+};

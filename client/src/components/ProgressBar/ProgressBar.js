@@ -1,28 +1,28 @@
-import React from 'react'
-import styles from './ProgressBar.module.sass'
+import React from 'react';
+import styles from './ProgressBar.module.sass';
 
 const ProgressBar = props => {
   const renderProgress = () => {
-    const array = []
+    const array = [];
     for (let i = 1; i <= 3; i++) {
-      array.push(renderBar(i))
+      array.push(renderBar(i));
     }
-    return array
-  }
+    return array;
+  };
 
   const renderBar = count => {
-    const { currentStep } = props
-    let classOuter = styles.outerNotActive
-    let classInner = styles.innerNotActive
-    let classProgress = ''
+    const { currentStep } = props;
+    let classOuter = styles.outerNotActive;
+    let classInner = styles.innerNotActive;
+    let classProgress = '';
     if (count === currentStep) {
-      classOuter = styles.outerActive
-      classInner = styles.innerActive
-      classProgress = styles.progressContainer
+      classOuter = styles.outerActive;
+      classInner = styles.innerActive;
+      classProgress = styles.progressContainer;
     }
     if (count < currentStep) {
-      classOuter = styles.outerComplete
-      classInner = styles.innerComplete
+      classOuter = styles.outerComplete;
+      classInner = styles.innerComplete;
     }
     return (
       <div className={classProgress} key={count}>
@@ -33,9 +33,9 @@ const ProgressBar = props => {
           {count !== 3 && <div className={styles.lineBar} />}
         </div>
       </div>
-    )
-  }
+    );
+  };
 
-  return <div className={styles.progressBarContainer}>{renderProgress()}</div>
-}
-export default ProgressBar
+  return <div className={styles.progressBarContainer}>{renderProgress()}</div>;
+};
+export default ProgressBar;

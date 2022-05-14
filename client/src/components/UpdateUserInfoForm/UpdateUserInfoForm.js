@@ -1,15 +1,15 @@
-import React from 'react'
-import { Form, Formik } from 'formik'
-import { connect } from 'react-redux'
-import { clearUserError } from '../../actions/actionCreator'
-import styles from './UpdateUserInfoForm.module.sass'
-import ImageUpload from '../InputComponents/ImageUpload/ImageUpload'
-import FormInput from '../FormInput/FormInput'
-import Schems from '../../validators/validationSchems'
-import Error from '../Error/Error'
+import React from 'react';
+import { Form, Formik } from 'formik';
+import { connect } from 'react-redux';
+import { clearUserError } from '../../actions/actionCreator';
+import styles from './UpdateUserInfoForm.module.sass';
+import ImageUpload from '../InputComponents/ImageUpload/ImageUpload';
+import FormInput from '../FormInput/FormInput';
+import Schems from '../../validators/validationSchems';
+import Error from '../Error/Error';
 
 const UpdateUserInfoForm = props => {
-  const { onSubmit, submitting, error, clearUserError } = props
+  const { onSubmit, submitting, error, clearUserError } = props;
   return (
     <Formik
       onSubmit={onSubmit}
@@ -34,7 +34,7 @@ const UpdateUserInfoForm = props => {
               container: styles.inputContainer,
               input: styles.input,
               warning: styles.error,
-              notValid: styles.notValid
+              notValid: styles.notValid,
             }}
           />
         </div>
@@ -48,7 +48,7 @@ const UpdateUserInfoForm = props => {
               container: styles.inputContainer,
               input: styles.input,
               warning: styles.error,
-              notValid: styles.notValid
+              notValid: styles.notValid,
             }}
           />
         </div>
@@ -62,7 +62,7 @@ const UpdateUserInfoForm = props => {
               container: styles.inputContainer,
               input: styles.input,
               warning: styles.error,
-              notValid: styles.notValid
+              notValid: styles.notValid,
             }}
           />
         </div>
@@ -71,7 +71,7 @@ const UpdateUserInfoForm = props => {
           classes={{
             uploadContainer: styles.imageUploadContainer,
             inputContainer: styles.uploadInputContainer,
-            imgStyle: styles.imgStyle
+            imgStyle: styles.imgStyle,
           }}
         />
         <button type='submit' disabled={submitting}>
@@ -79,23 +79,23 @@ const UpdateUserInfoForm = props => {
         </button>
       </Form>
     </Formik>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
-  const { data, error } = state.userStore
+  const { data, error } = state.userStore;
   return {
     error,
     initialValues: {
       firstName: data.firstName,
       lastName: data.lastName,
-      displayName: data.displayName
-    }
-  }
-}
+      displayName: data.displayName,
+    },
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  clearUserError: () => dispatch(clearUserError())
-})
+  clearUserError: () => dispatch(clearUserError()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateUserInfoForm)
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateUserInfoForm);

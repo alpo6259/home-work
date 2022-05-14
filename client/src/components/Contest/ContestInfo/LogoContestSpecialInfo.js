@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './ContestInfo.module.sass'
+import React from 'react';
+import styles from './ContestInfo.module.sass';
 
 const LogoContestSpecialInfo = props => {
-  const { nameVenture, brandStyle } = props
+  const { nameVenture, brandStyle } = props;
   return (
     <>
       {nameVenture && (
@@ -16,7 +16,7 @@ const LogoContestSpecialInfo = props => {
         <span className={styles.data}>{brandStyle}</span>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LogoContestSpecialInfo
+export default LogoContestSpecialInfo;

@@ -1,5 +1,5 @@
-import * as yup from 'yup'
-import valid from 'card-validator'
+import * as yup from 'yup';
+import valid from 'card-validator';
 
 export default {
   LoginSchem: yup.object().shape({
@@ -14,7 +14,7 @@ export default {
         'min 6 symbols',
         value => value && value.trim().length >= 6
       )
-      .required('required')
+      .required('required'),
   }),
   RegistrationSchem: yup.object().shape({
     email: yup
@@ -64,7 +64,7 @@ export default {
     agreeOfTerms: yup
       .boolean()
       .oneOf([true], 'Must Accept Terms and Conditions')
-      .required('Must Accept Terms and Conditions')
+      .required('Must Accept Terms and Conditions'),
   }),
   ContestSchem: yup.object({
     nameVenture: yup.string().min(3),
@@ -101,16 +101,16 @@ export default {
     typeOfName: yup.string().min(1),
     typeOfTagline: yup.string().min(1),
     brandStyle: yup.string().min(1),
-    file: yup.mixed()
+    file: yup.mixed(),
   }),
   filterSchem: yup.object().shape({
     typeIndex: yup.number().oneOf[(1, 2, 3, 4, 5, 6, 7)],
     contestId: yup.string(),
     awardSort: yup.string().matches(/(desc|asc)/),
-    industry: yup.string()
+    industry: yup.string(),
   }),
   LogoOfferSchema: yup.object().shape({
-    offerData: yup.mixed().required('required')
+    offerData: yup.mixed().required('required'),
   }),
   TextOfferSchema: yup.object().shape({
     offerData: yup
@@ -120,7 +120,7 @@ export default {
         'required',
         value => value && value.trim().length >= 1
       )
-      .required('suggestion is required')
+      .required('suggestion is required'),
   }),
   PaymentSchema: yup.object().shape({
     number: yup
@@ -146,7 +146,7 @@ export default {
         'expiry is invalid',
         value => valid.expirationDate(value).isValid
       )
-      .required('required')
+      .required('required'),
   }),
   CashoutSchema: yup.object().shape({
     sum: yup
@@ -176,7 +176,7 @@ export default {
         'expiry is invalid',
         value => valid.expirationDate(value).isValid
       )
-      .required('required')
+      .required('required'),
   }),
   UpdateUserSchema: yup.object().shape({
     firstName: yup
@@ -203,7 +203,7 @@ export default {
         value => value && value.trim().length >= 1
       )
       .required('required'),
-    file: yup.mixed()
+    file: yup.mixed(),
   }),
   MessageSchema: yup.object({
     message: yup
@@ -213,7 +213,7 @@ export default {
         'required',
         value => value && value.trim().length >= 1
       )
-      .required('required')
+      .required('required'),
   }),
   CatalogSchema: yup.object({
     catalogName: yup
@@ -223,6 +223,6 @@ export default {
         'required',
         value => value && value.trim().length >= 1
       )
-      .required('required')
-  })
-}
+      .required('required'),
+  }),
+};

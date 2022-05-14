@@ -1,28 +1,28 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import classNames from 'classnames'
-import Header from '../../components/Header/Header'
-import styles from './UserProfile.module.sass'
-import CONSTANTS from '../../constants'
-import UserInfo from '../../components/UserInfo/UserInfo'
-import PayForm from '../../components/PayForm/PayForm'
+import React from 'react';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+import Header from '../../components/Header/Header';
+import styles from './UserProfile.module.sass';
+import CONSTANTS from '../../constants';
+import UserInfo from '../../components/UserInfo/UserInfo';
+import PayForm from '../../components/PayForm/PayForm';
 import {
   cashOut,
   changeProfileModeView,
-  clearPaymentStore
-} from '../../actions/actionCreator'
-import Error from '../../components/Error/Error'
+  clearPaymentStore,
+} from '../../actions/actionCreator';
+import Error from '../../components/Error/Error';
 
 const UserProfile = props => {
   const pay = values => {
-    const { number, expiry, cvc, sum } = values
+    const { number, expiry, cvc, sum } = values;
     props.cashOut({
       number,
       expiry,
       cvc,
-      sum
-    })
-  }
+      sum,
+    });
+  };
 
   const {
     balance,
@@ -30,8 +30,8 @@ const UserProfile = props => {
     profileModeView,
     changeProfileModeView,
     error,
-    clearPaymentStore
-  } = props
+    clearPaymentStore,
+  } = props;
   return (
     <div>
       <Header />
@@ -42,7 +42,7 @@ const UserProfile = props => {
             <div
               className={classNames(styles.optionContainer, {
                 [styles.currentOption]:
-                  profileModeView === CONSTANTS.USER_INFO_MODE
+                  profileModeView === CONSTANTS.USER_INFO_MODE,
               })}
               onClick={() => changeProfileModeView(CONSTANTS.USER_INFO_MODE)}
             >
@@ -52,7 +52,7 @@ const UserProfile = props => {
               <div
                 className={classNames(styles.optionContainer, {
                   [styles.currentOption]:
-                    profileModeView === CONSTANTS.CASHOUT_MODE
+                    profileModeView === CONSTANTS.CASHOUT_MODE,
                 })}
                 onClick={() => changeProfileModeView(CONSTANTS.CASHOUT_MODE)}
               >
@@ -85,25 +85,25 @@ const UserProfile = props => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
-  const { balance, role } = state.userStore.data
-  const { profileModeView } = state.userProfile
-  const { error } = state.payment
+  const { balance, role } = state.userStore.data;
+  const { profileModeView } = state.userProfile;
+  const { error } = state.payment;
   return {
     balance,
     role,
     profileModeView,
-    error
-  }
-}
+    error,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   cashOut: data => dispatch(cashOut(data)),
   changeProfileModeView: data => dispatch(changeProfileModeView(data)),
-  clearPaymentStore: () => dispatch(clearPaymentStore())
-})
+  clearPaymentStore: () => dispatch(clearPaymentStore()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

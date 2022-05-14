@@ -1,5 +1,5 @@
-import ACTION from '../actions/actionTypes'
-import CONTANTS from '../constants'
+import ACTION from '../actions/actionTypes';
+import CONTANTS from '../constants';
 
 const initialState = {
   isFetching: true,
@@ -13,8 +13,8 @@ const initialState = {
   isBrief: true,
   isShowOnFull: false,
   imagePath: null,
-  isShowModal: false
-}
+  isShowModal: false,
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -24,8 +24,8 @@ export default function (state = initialState, action) {
         isFetching: true,
         contestData: null,
         error: null,
-        offers: []
-      }
+        offers: [],
+      };
     }
     case ACTION.GET_CONTEST_BY_ID_SUCCESS: {
       return {
@@ -33,108 +33,108 @@ export default function (state = initialState, action) {
         isFetching: false,
         contestData: action.data.contestData,
         error: null,
-        offers: action.data.offers
-      }
+        offers: action.data.offers,
+      };
     }
     case ACTION.CHANGE_CONTEST_VIEW_MODE: {
       return {
         ...state,
         isEditContest: false,
-        isBrief: action.data
-      }
+        isBrief: action.data,
+      };
     }
     case ACTION.CHANGE_EDIT_CONTEST: {
       return {
         ...state,
-        isEditContest: action.data
-      }
+        isEditContest: action.data,
+      };
     }
     case ACTION.GET_CONTEST_BY_ID_ERROR: {
       return {
         ...state,
         isFetching: false,
-        error: action.error
-      }
+        error: action.error,
+      };
     }
     case ACTION.UPDATE_STORE_AFTER_UPDATE_CONTEST: {
       return {
         ...state,
         error: null,
         isEditContest: false,
-        contestData: { ...state.contestData, ...action.data }
-      }
+        contestData: { ...state.contestData, ...action.data },
+      };
     }
     case ACTION.ADD_NEW_OFFER_TO_STORE: {
       return {
         ...state,
         error: null,
-        offers: [...action.data]
-      }
+        offers: [...action.data],
+      };
     }
     case ACTION.CHANGE_MARK_SUCCESS: {
       return {
         ...state,
         error: null,
-        offers: [...action.data]
-      }
+        offers: [...action.data],
+      };
     }
     case ACTION.CHANGE_STORE_FOR_STATUS: {
       return {
         ...state,
         error: null,
-        offers: [...action.data]
-      }
+        offers: [...action.data],
+      };
     }
     case ACTION.CHANGE_MARK_ERROR: {
       return {
         ...state,
-        changeMarkError: action.error
-      }
+        changeMarkError: action.error,
+      };
     }
     case ACTION.ADD_OFFER_ERROR: {
       return {
         ...state,
-        addOfferError: action.error
-      }
+        addOfferError: action.error,
+      };
     }
     case ACTION.SET_OFFER_STATUS_ERROR: {
       return {
         ...state,
-        setOfferStatusError: action.error
-      }
+        setOfferStatusError: action.error,
+      };
     }
     case ACTION.CLEAR_ADD_OFFER_ERROR: {
       return {
         ...state,
-        addOfferError: null
-      }
+        addOfferError: null,
+      };
     }
     case ACTION.CLEAR_SET_OFFER_STATUS_ERROR: {
       return {
         ...state,
-        setOfferStatusError: null
-      }
+        setOfferStatusError: null,
+      };
     }
     case ACTION.CLEAR_CHANGE_MARK_ERROR: {
       return {
         ...state,
-        changeMarkError: null
-      }
+        changeMarkError: null,
+      };
     }
     case ACTION.CHANGE_SHOW_IMAGE: {
       return {
         ...state,
         isShowOnFull: action.data.isShowOnFull,
-        imagePath: action.data.imagePath
-      }
+        imagePath: action.data.imagePath,
+      };
     }
     case ACTION.CHANGE_SHOW_MODAL: {
       return {
         ...state,
-        isShowModal: action.data
-      }
+        isShowModal: action.data,
+      };
     }
     default:
-      return state
+      return state;
   }
 }

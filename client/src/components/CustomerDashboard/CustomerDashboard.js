@@ -1,50 +1,50 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import classNames from 'classnames'
+import React from 'react';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
 import {
   getContestsForCustomer,
   clearContestList,
-  setNewCustomerFilter
-} from '../../actions/actionCreator'
-import CONSTANTS from '../../constants'
-import ContestsContainer from '../ContestsContainer/ContestsContainer'
-import ContestBox from '../ContestBox/ContestBox'
-import styles from './CustomerDashboard.module.sass'
-import TryAgain from '../TryAgain/TryAgain'
+  setNewCustomerFilter,
+} from '../../actions/actionCreator';
+import CONSTANTS from '../../constants';
+import ContestsContainer from '../ContestsContainer/ContestsContainer';
+import ContestBox from '../ContestBox/ContestBox';
+import styles from './CustomerDashboard.module.sass';
+import TryAgain from '../TryAgain/TryAgain';
 
 class CustomerDashboard extends React.Component {
   loadMore = startFrom => {
     this.props.getContests({
       limit: 8,
       offset: startFrom,
-      contestStatus: this.props.customerFilter
-    })
-  }
+      contestStatus: this.props.customerFilter,
+    });
+  };
 
   componentDidMount () {
-    this.getContests()
+    this.getContests();
   }
 
   getContests = () => {
     this.props.getContests({
       limit: 8,
-      contestStatus: this.props.customerFilter
-    })
-  }
+      contestStatus: this.props.customerFilter,
+    });
+  };
 
   componentDidUpdate (prevProps, prevState, snapshot) {
     if (this.props.customerFilter !== prevProps.customerFilter) {
-      this.getContests()
+      this.getContests();
     }
   }
 
   goToExtended = contest_id => {
-    this.props.history.push(`/contest/${contest_id}`)
-  }
+    this.props.history.push(`/contest/${contest_id}`);
+  };
 
   setContestList = () => {
-    const array = []
-    const { contests } = this.props
+    const array = [];
+    const { contests } = this.props;
     for (let i = 0; i < contests.length; i++) {
       array.push(
         <ContestBox
@@ -52,23 +52,23 @@ class CustomerDashboard extends React.Component {
           key={contests[i].id}
           goToExtended={this.goToExtended}
         />
-      )
+      );
     }
-    return array
-  }
+    return array;
+  };
 
   componentWillUnmount () {
-    this.props.clearContestsList()
+    this.props.clearContestsList();
   }
 
   tryToGetContest = () => {
-    this.props.clearContestsList()
-    this.getContests()
-  }
+    this.props.clearContestsList();
+    this.getContests();
+  };
 
   render () {
-    const { error, haveMore } = this.props
-    const { customerFilter } = this.props
+    const { error, haveMore } = this.props;
+    const { customerFilter } = this.props;
     return (
       <div className={styles.mainContainer}>
         <div className={styles.filterContainer}>
@@ -80,7 +80,7 @@ class CustomerDashboard extends React.Component {
               [styles.activeFilter]:
                 CONSTANTS.CONTEST_STATUS_ACTIVE === customerFilter,
               [styles.filter]:
-                CONSTANTS.CONTEST_STATUS_ACTIVE !== customerFilter
+                CONSTANTS.CONTEST_STATUS_ACTIVE !== customerFilter,
             })}
           >
             Active Contests
@@ -93,7 +93,7 @@ class CustomerDashboard extends React.Component {
               [styles.activeFilter]:
                 CONSTANTS.CONTEST_STATUS_FINISHED === customerFilter,
               [styles.filter]:
-                CONSTANTS.CONTEST_STATUS_FINISHED !== customerFilter
+                CONSTANTS.CONTEST_STATUS_FINISHED !== customerFilter,
             })}
           >
             Completed contests
@@ -106,7 +106,7 @@ class CustomerDashboard extends React.Component {
               [styles.activeFilter]:
                 CONSTANTS.CONTEST_STATUS_PENDING === customerFilter,
               [styles.filter]:
-                CONSTANTS.CONTEST_STATUS_PENDING !== customerFilter
+                CONSTANTS.CONTEST_STATUS_PENDING !== customerFilter,
             })}
           >
             Inactive contests
@@ -127,16 +127,16 @@ class CustomerDashboard extends React.Component {
           )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => state.contestsList
+const mapStateToProps = state => state.contestsList;
 
 const mapDispatchToProps = dispatch => ({
   getContests: data => dispatch(getContestsForCustomer(data)),
   clearContestsList: () => dispatch(clearContestList()),
-  newFilter: filter => dispatch(setNewCustomerFilter(filter))
-})
+  newFilter: filter => dispatch(setNewCustomerFilter(filter)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomerDashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerDashboard);

@@ -1,12 +1,12 @@
-import React from 'react'
-import classNames from 'classnames'
-import InputMask from 'react-input-mask'
-import { useField } from 'formik'
+import React from 'react';
+import classNames from 'classnames';
+import InputMask from 'react-input-mask';
+import { useField } from 'formik';
 
 const PayInput = props => {
-  const { label, changeFocus, classes, isInputMask, mask } = props
-  const [field, meta, helpers] = useField(props.name)
-  const { touched, error } = meta
+  const { label, changeFocus, classes, isInputMask, mask } = props;
+  const [field, meta, helpers] = useField(props.name);
+  const { touched, error } = meta;
 
   if (field.name === 'sum') {
     return (
@@ -15,14 +15,14 @@ const PayInput = props => {
           {...field}
           placeholder={label}
           className={classNames(classes.input, {
-            [classes.notValid]: touched && error
+            [classes.notValid]: touched && error,
           })}
         />
         {touched && error && (
           <span className={classes.error}>{error.message}!</span>
         )}
       </div>
-    )
+    );
   }
   if (isInputMask) {
     return (
@@ -33,7 +33,7 @@ const PayInput = props => {
           {...field}
           placeholder={label}
           className={classNames(classes.input, {
-            [classes.notValid]: touched && error
+            [classes.notValid]: touched && error,
           })}
           onFocus={() => changeFocus(field.name)}
         />
@@ -41,7 +41,7 @@ const PayInput = props => {
           <span className={classes.error}>{error.message}!</span>
         )}
       </div>
-    )
+    );
   }
   return (
     <div className={classes.container}>
@@ -49,7 +49,7 @@ const PayInput = props => {
         {...field}
         placeholder={label}
         className={classNames(classes.input, {
-          [classes.notValid]: touched && error
+          [classes.notValid]: touched && error,
         })}
         onFocus={() => changeFocus(field.name)}
       />
@@ -57,7 +57,7 @@ const PayInput = props => {
         <span className={classes.error}>{error.message}!</span>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default PayInput
+export default PayInput;

@@ -1,32 +1,32 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Field, Form, Formik } from 'formik'
-import { authActionLogin, clearAuth } from '../../actions/actionCreator'
-import styles from './LoginForm.module.sass'
-import FormInput from '../FormInput/FormInput'
-import Schems from '../../validators/validationSchems'
-import Error from '../Error/Error'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Field, Form, Formik } from 'formik';
+import { authActionLogin, clearAuth } from '../../actions/actionCreator';
+import styles from './LoginForm.module.sass';
+import FormInput from '../FormInput/FormInput';
+import Schems from '../../validators/validationSchems';
+import Error from '../Error/Error';
 
 class LoginForm extends React.Component {
   componentWillUnmount () {
-    this.props.authClear()
+    this.props.authClear();
   }
 
   clicked = values => {
-    this.props.loginRequest({ data: values, history: this.props.history })
-  }
+    this.props.loginRequest({ data: values, history: this.props.history });
+  };
 
   render () {
-    const { error, isFetching } = this.props.auth
-    const { submitting, authClear } = this.props
+    const { error, isFetching } = this.props.auth;
+    const { submitting, authClear } = this.props;
 
     const formInputClasses = {
       container: styles.inputContainer,
       input: styles.input,
       warning: styles.fieldWarning,
       notValid: styles.notValid,
-      valid: styles.valid
-    }
+      valid: styles.valid,
+    };
 
     return (
       <div className={styles.loginForm}>
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
         <Formik
           initialValues={{
             email: '',
-            password: ''
+            password: '',
           }}
           onSubmit={this.clicked}
           validationSchema={Schems.LoginSchem}
@@ -71,18 +71,18 @@ class LoginForm extends React.Component {
           </Form>
         </Formik>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
-  const { auth } = state
-  return { auth }
-}
+  const { auth } = state;
+  return { auth };
+};
 
 const mapDispatchToProps = dispatch => ({
   loginRequest: ({ data, history }) => dispatch(authActionLogin(data, history)),
-  authClear: () => dispatch(clearAuth())
-})
+  authClear: () => dispatch(clearAuth()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -1,5 +1,5 @@
-import React, { useLayoutEffect } from 'react'
-import { Field, ErrorMessage } from 'formik'
+import React, { useLayoutEffect } from 'react';
+import { Field, ErrorMessage } from 'formik';
 
 const SelectInput = ({
   header,
@@ -11,32 +11,32 @@ const SelectInput = ({
   const {
     form: { setFieldValue },
     meta: { initialValue },
-    field
-  } = props
+    field,
+  } = props;
 
   const getOptionsArray = () => {
-    const array = []
+    const array = [];
     for (let i = 0; optionsArray && i < optionsArray.length; i++) {
-      let option
+      let option;
       if (valueArray) {
         option = (
           <option key={i} value={valueArray[i]}>
             {optionsArray[i]}
           </option>
-        )
+        );
       } else {
-        option = <option key={i}>{optionsArray[i]}</option>
+        option = <option key={i}>{optionsArray[i]}</option>;
       }
-      array.push(option)
+      array.push(option);
     }
-    return array
-  }
+    return array;
+  };
 
   useLayoutEffect(() => {
     if (!initialValue && optionsArray) {
-      setFieldValue(field.name, valueArray ? valueArray[0] : optionsArray[0])
+      setFieldValue(field.name, valueArray ? valueArray[0] : optionsArray[0]);
     }
-  }, [])
+  }, []);
 
   return (
     <div className={classes.inputContainer}>
@@ -45,8 +45,8 @@ const SelectInput = ({
         {getOptionsArray()}
       </select>
     </div>
-  )
-}
+  );
+};
 
 const SelectInputWrapper = ({
   header,
@@ -73,6 +73,6 @@ const SelectInputWrapper = ({
       </>
     )}
   </Field>
-)
+);
 
-export default SelectInputWrapper
+export default SelectInputWrapper;

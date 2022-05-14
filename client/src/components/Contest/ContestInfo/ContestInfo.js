@@ -1,12 +1,12 @@
-import React from 'react'
-import styles from '../../Brief/Brief.module.sass'
-import CONSTANTS from '../../../constants'
-import LogoContestSpecialInfo from './LogoContestSpecialInfo'
-import NameContestSpecialInfo from './NameContestSpecialInfo'
-import TaglineContestSpecialInfo from './TaglineContestSpecialInfo'
+import React from 'react';
+import styles from '../../Brief/Brief.module.sass';
+import CONSTANTS from '../../../constants';
+import LogoContestSpecialInfo from './LogoContestSpecialInfo';
+import NameContestSpecialInfo from './NameContestSpecialInfo';
+import TaglineContestSpecialInfo from './TaglineContestSpecialInfo';
 
 const ContestInfo = props => {
-  const { changeEditContest, userId, contestData, role, goChat } = props
+  const { changeEditContest, userId, contestData, role, goChat } = props;
   const {
     typeOfTagline,
     brandStyle,
@@ -20,8 +20,8 @@ const ContestInfo = props => {
     originalFileName,
     fileName,
     User,
-    status
-  } = contestData
+    status,
+  } = contestData;
   return (
     <div className={styles.mainContestInfoContainer}>
       <div className={styles.infoContainer}>
@@ -94,7 +94,7 @@ const ContestInfo = props => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContestInfo
+export default ContestInfo;

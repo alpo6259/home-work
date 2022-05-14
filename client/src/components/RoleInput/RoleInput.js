@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './RoleInput.module.sass'
+import React from 'react';
+import styles from './RoleInput.module.sass';
 
 const RoleInput = ({ label, id, strRole, infoRole, field, type }) => (
   <label htmlFor={id}>
@@ -11,6 +11,6 @@ const RoleInput = ({ label, id, strRole, infoRole, field, type }) => (
       </div>
     </div>
   </label>
-)
+);
 
-export default RoleInput
+export default RoleInput;

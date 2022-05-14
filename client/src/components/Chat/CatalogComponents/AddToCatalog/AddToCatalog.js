@@ -1,35 +1,35 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Formik, Form } from 'formik'
-import SelectInput from '../../../SelectInput/SelectInput'
-import { addChatToCatalog } from '../../../../actions/actionCreator'
-import styles from './AddToCatalog.module.sass'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Formik, Form } from 'formik';
+import SelectInput from '../../../SelectInput/SelectInput';
+import { addChatToCatalog } from '../../../../actions/actionCreator';
+import styles from './AddToCatalog.module.sass';
 
 const AddToCatalog = props => {
   const getCatalogsNames = () => {
-    const { catalogList } = props
-    const namesArray = []
+    const { catalogList } = props;
+    const namesArray = [];
     catalogList.forEach(catalog => {
-      namesArray.push(catalog.catalogName)
-    })
-    return namesArray
-  }
+      namesArray.push(catalog.catalogName);
+    });
+    return namesArray;
+  };
 
   const getValueArray = () => {
-    const { catalogList } = props
-    const valueArray = []
+    const { catalogList } = props;
+    const valueArray = [];
     catalogList.forEach(catalog => {
-      valueArray.push(catalog._id)
-    })
-    return valueArray
-  }
+      valueArray.push(catalog._id);
+    });
+    return valueArray;
+  };
 
   const click = values => {
-    const { addChatId } = props
-    props.addChatToCatalog({ chatId: addChatId, catalogId: values.catalogId })
-  }
+    const { addChatId } = props;
+    props.addChatToCatalog({ chatId: addChatId, catalogId: values.catalogId });
+  };
 
-  const selectArray = getCatalogsNames()
+  const selectArray = getCatalogsNames();
   return (
     <>
       {selectArray.length !== 0 ? (
@@ -41,7 +41,7 @@ const AddToCatalog = props => {
               classes={{
                 inputContainer: styles.selectInputContainer,
                 inputHeader: styles.selectHeader,
-                selectInput: styles.select
+                selectInput: styles.select,
               }}
               optionsArray={selectArray}
               valueArray={getValueArray()}
@@ -55,13 +55,13 @@ const AddToCatalog = props => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-const mapStateToProps = state => state.chatStore
+const mapStateToProps = state => state.chatStore;
 
 const mapDispatchToProps = dispatch => ({
-  addChatToCatalog: data => dispatch(addChatToCatalog(data))
-})
+  addChatToCatalog: data => dispatch(addChatToCatalog(data)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddToCatalog)
+export default connect(mapStateToProps, mapDispatchToProps)(AddToCatalog);

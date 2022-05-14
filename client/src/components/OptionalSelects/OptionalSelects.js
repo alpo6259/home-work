@@ -1,13 +1,13 @@
-import React from 'react'
-import CONSTANTS from '../../constants'
-import SelectInput from '../SelectInput/SelectInput'
-import FormInput from '../FormInput/FormInput'
-import styles from '../ContestForm/ContestForm.module.sass'
-import Spinner from '../Spinner/Spinner'
+import React from 'react';
+import CONSTANTS from '../../constants';
+import SelectInput from '../SelectInput/SelectInput';
+import FormInput from '../FormInput/FormInput';
+import styles from '../ContestForm/ContestForm.module.sass';
+import Spinner from '../Spinner/Spinner';
 
 const OptionalSelects = props => {
   if (props.isFetching) {
-    return <Spinner />
+    return <Spinner />;
   }
   switch (props.contestType) {
     case CONSTANTS.NAME_CONTEST: {
@@ -20,7 +20,7 @@ const OptionalSelects = props => {
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
-              warning: styles.warning
+              warning: styles.warning,
             }}
             optionsArray={props.dataForContest.data.typeOfName}
           />
@@ -31,12 +31,12 @@ const OptionalSelects = props => {
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
-              warning: styles.warning
+              warning: styles.warning,
             }}
             optionsArray={props.dataForContest.data.nameStyle}
           />
         </>
-      )
+      );
     }
     case CONSTANTS.LOGO_CONTEST: {
       return (
@@ -52,7 +52,7 @@ const OptionalSelects = props => {
               classes={{
                 container: styles.componentInputContainer,
                 input: styles.input,
-                warning: styles.warning
+                warning: styles.warning,
               }}
             />
           </div>
@@ -62,13 +62,13 @@ const OptionalSelects = props => {
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
-              warning: styles.warning
+              warning: styles.warning,
             }}
             header='Brand Style'
             optionsArray={props.dataForContest.data.brandStyle}
           />
         </>
-      )
+      );
     }
     case CONSTANTS.TAGLINE_CONTEST: {
       return (
@@ -84,7 +84,7 @@ const OptionalSelects = props => {
               classes={{
                 container: styles.componentInputContainer,
                 input: styles.input,
-                warning: styles.warning
+                warning: styles.warning,
               }}
             />
           </div>
@@ -94,15 +94,15 @@ const OptionalSelects = props => {
               inputContainer: styles.selectInputContainer,
               inputHeader: styles.selectHeader,
               selectInput: styles.select,
-              warning: styles.warning
+              warning: styles.warning,
             }}
             header='Type tagline'
             optionsArray={props.dataForContest.data.typeOfTagline}
           />
         </>
-      )
+      );
     }
   }
-}
+};
 
-export default OptionalSelects
+export default OptionalSelects;

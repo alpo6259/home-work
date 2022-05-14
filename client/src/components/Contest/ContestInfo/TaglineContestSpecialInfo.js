@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './ContestInfo.module.sass'
+import React from 'react';
+import styles from './ContestInfo.module.sass';
 
 const TaglineContestSpecialInfo = props => {
-  const { nameVenture, typeOfTagline } = props
+  const { nameVenture, typeOfTagline } = props;
   return (
     <>
       {nameVenture && (
@@ -16,7 +16,7 @@ const TaglineContestSpecialInfo = props => {
         <span className={styles.data}>{typeOfTagline}</span>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TaglineContestSpecialInfo
+export default TaglineContestSpecialInfo;

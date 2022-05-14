@@ -1,23 +1,23 @@
-import React from 'react'
-import Cards from 'react-credit-cards'
-import { Form, Formik } from 'formik'
-import 'react-credit-cards/es/styles-compiled.css'
-import { connect } from 'react-redux'
-import styles from './PayForm.module.sass'
-import { changeFocusOnCard } from '../../actions/actionCreator'
-import PayInput from '../InputComponents/PayInput/PayInput'
-import Schems from '../../validators/validationSchems'
+import React from 'react';
+import Cards from 'react-credit-cards';
+import { Form, Formik } from 'formik';
+import 'react-credit-cards/es/styles-compiled.css';
+import { connect } from 'react-redux';
+import styles from './PayForm.module.sass';
+import { changeFocusOnCard } from '../../actions/actionCreator';
+import PayInput from '../InputComponents/PayInput/PayInput';
+import Schems from '../../validators/validationSchems';
 
 const PayForm = props => {
   const changeFocusOnCard = name => {
-    props.changeFocusOnCard(name)
-  }
+    props.changeFocusOnCard(name);
+  };
 
   const pay = values => {
-    props.sendRequest(values)
-  }
+    props.sendRequest(values);
+  };
 
-  const { focusOnElement, isPayForOrder } = props
+  const { focusOnElement, isPayForOrder } = props;
   return (
     <div className={styles.payFormContainer}>
       <span className={styles.headerInfo}>Payment Information</span>
@@ -27,13 +27,13 @@ const PayForm = props => {
           name: '',
           number: '',
           cvc: '',
-          expiry: ''
+          expiry: '',
         }}
         onSubmit={pay}
         validationSchema={Schems.PaymentSchema}
       >
         {({ values }) => {
-          const { name, number, expiry, cvc } = values
+          const { name, number, expiry, cvc } = values;
 
           return (
             <>
@@ -55,7 +55,7 @@ const PayForm = props => {
                       container: styles.inputContainer,
                       input: styles.input,
                       notValid: styles.notValid,
-                      error: styles.error
+                      error: styles.error,
                     }}
                     type='text'
                     label='name'
@@ -71,7 +71,7 @@ const PayForm = props => {
                         container: styles.inputContainer,
                         input: styles.input,
                         notValid: styles.notValid,
-                        error: styles.error
+                        error: styles.error,
                       }}
                       type='text'
                       label='sum'
@@ -88,7 +88,7 @@ const PayForm = props => {
                       container: styles.inputContainer,
                       input: styles.input,
                       notValid: styles.notValid,
-                      error: styles.error
+                      error: styles.error,
                     }}
                     type='text'
                     label='card number'
@@ -106,7 +106,7 @@ const PayForm = props => {
                         container: styles.inputContainer,
                         input: styles.input,
                         notValid: styles.notValid,
-                        error: styles.error
+                        error: styles.error,
                       }}
                       type='text'
                       label='expiry'
@@ -123,7 +123,7 @@ const PayForm = props => {
                         container: styles.inputContainer,
                         input: styles.input,
                         notValid: styles.notValid,
-                        error: styles.error
+                        error: styles.error,
                       }}
                       type='text'
                       label='cvc'
@@ -133,7 +133,7 @@ const PayForm = props => {
                 </div>
               </Form>
             </>
-          )
+          );
         }}
       </Formik>
       {isPayForOrder && (
@@ -152,11 +152,11 @@ const PayForm = props => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
-  changeFocusOnCard: data => dispatch(changeFocusOnCard(data))
-})
+  changeFocusOnCard: data => dispatch(changeFocusOnCard(data)),
+});
 
-export default connect(null, mapDispatchToProps)(PayForm)
+export default connect(null, mapDispatchToProps)(PayForm);

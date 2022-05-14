@@ -1,7 +1,7 @@
-import React from 'react'
-import classNames from 'classnames'
-import styles from './DialogBox.module.sass'
-import CONSTANTS from '../../../../constants'
+import React from 'react';
+import classNames from 'classnames';
+import styles from './DialogBox.module.sass';
+import CONSTANTS from '../../../../constants';
 
 const DialogBox = props => {
   const {
@@ -13,18 +13,18 @@ const DialogBox = props => {
     catalogOperation,
     goToExpandedDialog,
     chatMode,
-    interlocutor
-  } = props
+    interlocutor,
+  } = props;
   const {
     favoriteList,
     participants,
     blackList,
     _id,
     text,
-    createAt
-  } = chatPreview
-  const isFavorite = favoriteList[participants.indexOf(userId)]
-  const isBlocked = blackList[participants.indexOf(userId)]
+    createAt,
+  } = chatPreview;
+  const isFavorite = favoriteList[participants.indexOf(userId)];
+  const isBlocked = blackList[participants.indexOf(userId)];
   return (
     <div
       className={styles.previewChatBox}
@@ -35,8 +35,8 @@ const DialogBox = props => {
             participants,
             _id,
             blackList,
-            favoriteList
-          }
+            favoriteList,
+          },
         })
       }
     >
@@ -62,14 +62,14 @@ const DialogBox = props => {
               changeFavorite(
                 {
                   participants,
-                  favoriteFlag: !isFavorite
+                  favoriteFlag: !isFavorite,
                 },
                 event
               )
             }
             className={classNames({
               'far fa-heart': !isFavorite,
-              'fas fa-heart': isFavorite
+              'fas fa-heart': isFavorite,
             })}
           />
           <i
@@ -77,14 +77,14 @@ const DialogBox = props => {
               changeBlackList(
                 {
                   participants,
-                  blackListFlag: !isBlocked
+                  blackListFlag: !isBlocked,
                 },
                 event
               )
             }
             className={classNames({
               'fas fa-user-lock': !isBlocked,
-              'fas fa-unlock': isBlocked
+              'fas fa-unlock': isBlocked,
             })}
           />
           <i
@@ -93,13 +93,13 @@ const DialogBox = props => {
               'far fa-plus-square':
                 chatMode !== CONSTANTS.CATALOG_PREVIEW_CHAT_MODE,
               'fas fa-minus-circle':
-                chatMode === CONSTANTS.CATALOG_PREVIEW_CHAT_MODE
+                chatMode === CONSTANTS.CATALOG_PREVIEW_CHAT_MODE,
             })}
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DialogBox
+export default DialogBox;

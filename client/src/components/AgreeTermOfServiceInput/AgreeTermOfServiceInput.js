@@ -1,13 +1,13 @@
-import React from 'react'
-import { Field } from 'formik'
+import React from 'react';
+import { Field } from 'formik';
 
 const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
   <Field {...rest}>
     {props => {
       const {
         meta: { touched, error },
-        field
-      } = props
+        field,
+      } = props;
 
       return (
         <div>
@@ -22,9 +22,9 @@ const AgreeTermOfServiceInput = ({ id, type, classes, label, ...rest }) => (
           </div>
           {touched && error && <span className={classes.warning}>{error}</span>}
         </div>
-      )
+      );
     }}
   </Field>
-)
+);
 
-export default AgreeTermOfServiceInput
+export default AgreeTermOfServiceInput;

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import Logo from '../../components/Logo'
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
-import styles from './RegistrationPage.module.sass'
-import { clearErrorSignUpAndLogin } from '../../actions/actionCreator'
-import CONSTANTS from '../../constants'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Logo from '../../components/Logo';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import styles from './RegistrationPage.module.sass';
+import { clearErrorSignUpAndLogin } from '../../actions/actionCreator';
+import CONSTANTS from '../../constants';
 
 const RegistrationPage = props => {
-  props.clearError()
+  props.clearError();
 
   return (
     <div className={styles.signUpPage}>
@@ -116,11 +116,11 @@ const RegistrationPage = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
-  clearError: () => dispatch(clearErrorSignUpAndLogin())
-})
+  clearError: () => dispatch(clearErrorSignUpAndLogin()),
+});
 
-export default connect(null, mapDispatchToProps)(RegistrationPage)
+export default connect(null, mapDispatchToProps)(RegistrationPage);

@@ -1,10 +1,10 @@
-import ACTION from '../actions/actionTypes'
+import ACTION from '../actions/actionTypes';
 
 const initialState = {
   isFetching: true,
   error: null,
-  data: null
-}
+  data: null,
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -12,27 +12,27 @@ export default function (state = initialState, action) {
       return {
         isFetching: true,
         error: null,
-        data: null
-      }
+        data: null,
+      };
     }
     case ACTION.UPDATE_CONTEST_SUCCESS: {
       return {
         isFetching: false,
         error: null,
-        data: action.data
-      }
+        data: action.data,
+      };
     }
     case ACTION.UPDATE_CONTEST_ERROR: {
       return {
         isFetching: false,
         error: action.error,
-        data: null
-      }
+        data: null,
+      };
     }
     case ACTION.CLEAR_UPDATE_CONTEST_STORE: {
-      return initialState
+      return initialState;
     }
     default:
-      return state
+      return state;
   }
 }

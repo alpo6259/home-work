@@ -1,18 +1,18 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Field, Form, Formik } from 'formik'
-import Error from '../Error/Error'
-import { authActionRegister, clearAuth } from '../../actions/actionCreator'
-import styles from './RegistrationForm.module.sass'
-import FormInput from '../FormInput/FormInput'
-import RoleInput from '../RoleInput/RoleInput'
-import AgreeTermOfServiceInput from '../AgreeTermOfServiceInput/AgreeTermOfServiceInput'
-import CONSTANTS from '../../constants'
-import Schems from '../../validators/validationSchems'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Field, Form, Formik } from 'formik';
+import Error from '../Error/Error';
+import { authActionRegister, clearAuth } from '../../actions/actionCreator';
+import styles from './RegistrationForm.module.sass';
+import FormInput from '../FormInput/FormInput';
+import RoleInput from '../RoleInput/RoleInput';
+import AgreeTermOfServiceInput from '../AgreeTermOfServiceInput/AgreeTermOfServiceInput';
+import CONSTANTS from '../../constants';
+import Schems from '../../validators/validationSchems';
 
 class RegistrationForm extends React.Component {
   componentWillUnmount () {
-    this.props.authClear()
+    this.props.authClear();
   }
 
   clicked = values => {
@@ -23,22 +23,22 @@ class RegistrationForm extends React.Component {
         displayName: values.displayName,
         email: values.email,
         password: values.password,
-        role: values.role
+        role: values.role,
       },
-      history: this.props.history
-    })
-  }
+      history: this.props.history,
+    });
+  };
 
   render () {
-    const { submitting, auth, authClear } = this.props
-    const { error } = auth
+    const { submitting, auth, authClear } = this.props;
+    const { error } = auth;
     const formInputClasses = {
       container: styles.inputContainer,
       input: styles.input,
       warning: styles.fieldWarning,
       notValid: styles.notValid,
-      valid: styles.valid
-    }
+      valid: styles.valid,
+    };
     return (
       <div className={styles.signUpFormContainer}>
         {error && (
@@ -61,7 +61,7 @@ class RegistrationForm extends React.Component {
             password: '',
             confirmPassword: '',
             role: CONSTANTS.CUSTOMER,
-            agreeOfTerms: false
+            agreeOfTerms: false,
           }}
           onSubmit={this.clicked}
           validationSchema={Schems.RegistrationSchem}
@@ -134,7 +134,7 @@ class RegistrationForm extends React.Component {
                 name='agreeOfTerms'
                 classes={{
                   container: styles.termsOfService,
-                  warning: styles.fieldWarning
+                  warning: styles.fieldWarning,
                 }}
                 id='termsOfService'
                 type='checkbox'
@@ -150,20 +150,20 @@ class RegistrationForm extends React.Component {
           </Form>
         </Formik>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   auth: state.auth,
   initialValues: {
-    role: CONSTANTS.CUSTOMER
-  }
-})
+    role: CONSTANTS.CUSTOMER,
+  },
+});
 
 const mapDispatchToProps = dispatch => ({
   register: ({ data, history }) => dispatch(authActionRegister(data, history)),
-  authClear: () => dispatch(clearAuth())
-})
+  authClear: () => dispatch(clearAuth()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm)
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);

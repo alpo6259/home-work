@@ -1,23 +1,23 @@
-import socketIoClient from 'socket.io-client'
-import CONSTANTS from '../../../constants'
+import socketIoClient from 'socket.io-client';
+import CONSTANTS from '../../../constants';
 
 class WebSocket {
   constructor (dispatch, getState, room) {
-    this.dispatch = dispatch
-    this.getState = getState
+    this.dispatch = dispatch;
+    this.getState = getState;
     this.socket = socketIoClient(`${CONSTANTS.BASE_URL}${room}`, {
-      origins: 'localhost:*'
-    })
-    this.listen()
+      origins: 'localhost:*',
+    });
+    this.listen();
   }
 
   listen = () => {
     this.socket.on('connect', () => {
-      this.anotherSubscribes()
-    })
-  }
+      this.anotherSubscribes();
+    });
+  };
 
-  anotherSubscribes = () => {}
+  anotherSubscribes = () => {};
 }
 
-export default WebSocket
+export default WebSocket;

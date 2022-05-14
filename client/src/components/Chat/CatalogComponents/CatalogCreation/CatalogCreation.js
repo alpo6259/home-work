@@ -1,19 +1,19 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import classNames from 'classnames'
-import CONSTANTS from '../../../../constants'
+import React from 'react';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+import CONSTANTS from '../../../../constants';
 import {
   changeTypeOfChatAdding,
   changeShowAddChatToCatalogMenu,
-  getCatalogList
-} from '../../../../actions/actionCreator'
-import styles from './CatalogCreation.module.sass'
-import AddToCatalog from '../AddToCatalog/AddToCatalog'
-import CreateCatalog from '../CreateCatalog/CreateCatalog'
+  getCatalogList,
+} from '../../../../actions/actionCreator';
+import styles from './CatalogCreation.module.sass';
+import AddToCatalog from '../AddToCatalog/AddToCatalog';
+import CreateCatalog from '../CreateCatalog/CreateCatalog';
 
 class CatalogCreation extends React.Component {
   componentDidMount () {
-    this.props.getCatalogList()
+    this.props.getCatalogList();
   }
 
   render () {
@@ -21,12 +21,12 @@ class CatalogCreation extends React.Component {
       changeTypeOfChatAdding,
       catalogCreationMode,
       changeShowAddChatToCatalogMenu,
-      isFetching
-    } = this.props
+      isFetching,
+    } = this.props;
     const {
       ADD_CHAT_TO_OLD_CATALOG,
-      CREATE_NEW_CATALOG_AND_ADD_CHAT
-    } = CONSTANTS
+      CREATE_NEW_CATALOG_AND_ADD_CHAT,
+    } = CONSTANTS;
     return (
       <>
         {!isFetching && (
@@ -40,7 +40,7 @@ class CatalogCreation extends React.Component {
                 onClick={() => changeTypeOfChatAdding(ADD_CHAT_TO_OLD_CATALOG)}
                 className={classNames({
                   [styles.active]:
-                    catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG
+                    catalogCreationMode === ADD_CHAT_TO_OLD_CATALOG,
                 })}
               >
                 Old
@@ -51,7 +51,7 @@ class CatalogCreation extends React.Component {
                 }
                 className={classNames({
                   [styles.active]:
-                    catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT
+                    catalogCreationMode === CREATE_NEW_CATALOG_AND_ADD_CHAT,
                 })}
               >
                 New
@@ -65,17 +65,17 @@ class CatalogCreation extends React.Component {
           </div>
         )}
       </>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => state.chatStore
+const mapStateToProps = state => state.chatStore;
 
 const mapDispatchToProps = dispatch => ({
   changeTypeOfChatAdding: data => dispatch(changeTypeOfChatAdding(data)),
   changeShowAddChatToCatalogMenu: () =>
     dispatch(changeShowAddChatToCatalogMenu()),
-  getCatalogList: () => dispatch(getCatalogList())
-})
+  getCatalogList: () => dispatch(getCatalogList()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CatalogCreation)
+export default connect(mapStateToProps, mapDispatchToProps)(CatalogCreation);

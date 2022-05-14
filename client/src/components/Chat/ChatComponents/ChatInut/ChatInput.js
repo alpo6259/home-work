@@ -1,21 +1,21 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Form, Formik } from 'formik'
-import { sendMessageAction } from '../../../../actions/actionCreator'
-import styles from './ChatInput.module.sass'
-import CONSTANTS from '../../../../constants'
-import FormInput from '../../../FormInput/FormInput'
-import Schems from '../../../../validators/validationSchems'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Form, Formik } from 'formik';
+import { sendMessageAction } from '../../../../actions/actionCreator';
+import styles from './ChatInput.module.sass';
+import CONSTANTS from '../../../../constants';
+import FormInput from '../../../FormInput/FormInput';
+import Schems from '../../../../validators/validationSchems';
 
 const ChatInput = props => {
   const submitHandler = (values, { resetForm }) => {
     props.sendMessage({
       messageBody: values.message,
       recipient: props.interlocutor.id,
-      interlocutor: props.interlocutor
-    })
-    resetForm()
-  }
+      interlocutor: props.interlocutor,
+    });
+    resetForm();
+  };
 
   return (
     <div className={styles.inputContainer}>
@@ -32,7 +32,7 @@ const ChatInput = props => {
             classes={{
               container: styles.container,
               input: styles.input,
-              notValid: styles.notValid
+              notValid: styles.notValid,
             }}
           />
           <button type='submit'>
@@ -44,17 +44,17 @@ const ChatInput = props => {
         </Form>
       </Formik>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
-  const { interlocutor } = state.chatStore
-  const { data } = state.userStore
-  return { interlocutor, data }
-}
+  const { interlocutor } = state.chatStore;
+  const { data } = state.userStore;
+  return { interlocutor, data };
+};
 
 const mapDispatchToProps = dispatch => ({
-  sendMessage: data => dispatch(sendMessageAction(data))
-})
+  sendMessage: data => dispatch(sendMessageAction(data)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatInput)
+export default connect(mapStateToProps, mapDispatchToProps)(ChatInput);
