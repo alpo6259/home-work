@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Logo from '../../components/Logo';
 import { Link, withRouter } from 'react-router-dom';
 import styles from './Header.module.sass';
 import CONSTANTS from '../../constants';
@@ -46,33 +47,29 @@ class Header extends React.Component {
             />
             <ul>
               <li>
-                <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                <Link to='/dashboard'>
                   <span>View Dashboard</span>
                 </Link>
               </li>
               <li>
-                <Link to='/account' style={{ textDecoration: 'none' }}>
+                <Link to='/account'>
                   <span>My Account</span>
                 </Link>
               </li>
               <li>
-                <Link
-                  to='http:/www.google.com'
-                  style={{ textDecoration: 'none' }}
-                >
+                <Link to='http:/www.google.com'>
                   <span>Messages</span>
                 </Link>
               </li>
               <li>
-                <Link
-                  to='http:/www.google.com'
-                  style={{ textDecoration: 'none' }}
-                >
+                <Link to='http:/www.google.com'>
                   <span>Affiliate Dashboard</span>
                 </Link>
               </li>
               <li>
-                <span onClick={this.logOut}>Logout</span>
+                <Link to='/'>
+                  <span onClick={this.logOut}>Logout</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -86,10 +83,10 @@ class Header extends React.Component {
     }
     return (
       <>
-        <Link to='/login' style={{ textDecoration: 'none' }}>
+        <Link to='/login'>
           <span className={styles.btn}>LOGIN</span>
         </Link>
-        <Link to='/registration' style={{ textDecoration: 'none' }}>
+        <Link to='/registration'>
           <span className={styles.btn}>SIGN UP</span>
         </Link>
       </>
@@ -109,21 +106,25 @@ class Header extends React.Component {
           </span>
           <a href='http://www.google.com'>Read Announcement</a>
         </div>
+
         <div className={styles.loginSignnUpHeaders}>
-          <div className={styles.numberContainer}>
-            <img src={`${CONSTANTS.STATIC_IMAGES_PATH}phone.png`} alt='phone' />
-            <span>(877)&nbsp;355-3585</span>
-          </div>
+          <a href={`tel:+${CONSTANTS.CONTACT_INFO.TEL}`}>
+            <div className={styles.numberContainer}>
+              <img
+                src={`${CONSTANTS.STATIC_IMAGES_PATH}phone.png`}
+                alt='phone'
+              />
+              <span>{CONSTANTS.CONTACT_INFO.TEL}</span>
+            </div>
+          </a>
+
           <div className={styles.userButtonsContainer}>
             {this.renderLoginButtons()}
           </div>
         </div>
+
         <div className={styles.navContainer}>
-          <img
-            src={`${CONSTANTS.STATIC_IMAGES_PATH}blue-logo.png`}
-            className={styles.logo}
-            alt='blue_logo'
-          />
+          <Logo />
           <div className={styles.leftNav}>
             <div className={styles.nav}>
               <ul>
