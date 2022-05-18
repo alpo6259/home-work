@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { getUserAction } from '../../actions/actionCreator';
-import Spinner from '../Spinner/Spinner';
+import { getUserAction } from '../../../actions/actionCreator';
+import Spinner from '../../Spinner/Spinner';
 
-const PrivateHoc = (Component, props) => {
+const withAuth = (Component, props) => {
   const mapStateToProps = state => state.userStore;
 
   const mapDispatchToProps = dispatch => ({
@@ -40,4 +40,4 @@ const PrivateHoc = (Component, props) => {
   return connect(mapStateToProps, mapDispatchToProps)(Hoc);
 };
 
-export default PrivateHoc;
+export default withAuth;
