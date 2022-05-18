@@ -1,0 +1,26 @@
+[
+  {
+    "iconClassName": "fab fa-whmcs fa-2x",
+    "iconColor": "#de4437",
+    "iconBgColor": "#f6e7e7",
+    "header": "Managed Contests",
+    "body": "Combine the power of crowdsourcing with the rich experience of our branding consultants. Get a complete agency-level experience.",
+    "linkHref": "#"
+  },
+  {
+    "iconClassName": "fa fa-users fa-2x",
+    "iconColor": "#00c9a7",
+    "iconBgColor": "#dff4f2",
+    "header": "Audience Testing",
+    "body": "Get unbiased feedback from real people to choose your most important brand elements with confidence!",
+    "linkHref": "#"
+  },
+  {
+    "iconClassName": "fa fa-trademark fa-2x",
+    "iconColor": "#377dff",
+    "iconBgColor": "#e5edfb",
+    "header": "Trademark Support",
+    "body": "Work with our team of experienced licensed trademark attorneys to protect your name, tagline, and logo with the USPTO.",
+    "linkHref": "#"
+  }
+]
