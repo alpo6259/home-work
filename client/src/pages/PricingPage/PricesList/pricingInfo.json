@@ -1,0 +1,58 @@
+[
+  {
+    "color": "#e0b48d",
+    "type": "Bronze",
+    "criterion": "Branding on a budget",
+    "price": "US$299",
+    "profit": [
+      { "body": "Prize to Winner - $135 (Included)", "tooltip": "111" },
+      {
+        "body": "Validation Services & Upgrades ($39 value)",
+        "tooltip": "222"
+      },
+      { "body": "Expected 300+ Entries", "tooltip": "333" }
+    ]
+  },
+  {
+    "color": "#e8b954",
+    "type": "Gold",
+    "criterion": "Increase participation and basic brand validation",
+    "price": "US$449",
+    "profit": [
+      { "body": "Prize to Winner - $200 (Included)", "tooltip": "111" },
+      {
+        "body": "Validation Services & Upgrades ($305 value)",
+        "tooltip": "222"
+      },
+      { "body": "Expected 600+ Entries", "tooltip": "333" },
+      { "body": "Partial Refund Option", "tooltip": "444" }
+    ]
+  },
+  {
+    "color": "#656565",
+    "type": "Platinum",
+    "criterion": "Work with top-level creatives, plus agency-style brand validation",
+    "price": "US$749",
+    "profit": [
+      { "body": "Prize to Winner - $300 (Included)", "tooltip": "111" },
+      {
+        "body": "Validation Services & Upgrades ($979 value)",
+        "tooltip": "222"
+      },
+      { "body": "Expected 1000+ Entries", "tooltip": "333" },
+      { "body": "Partial Refund Option", "tooltip": "444" }
+    ]
+  },
+  {
+    "color": "#28d2d0",
+    "type": "Managed",
+    "criterion": "A full agency experience without the agency price tag",
+    "price": "US$1499",
+    "profit": [
+      {
+        "body": "Receive optimum results from your Platinum Contest by launching a Managed Contest Package and working one-on-one with an experienced Squadhelp Branding Consultant. With significantly more validation services, professional brief creation, and daily management of your contest by your Branding Expert, you'll receive an enhanced branding experience to closeout your branding project. Learn More about Managed Contest Service",
+        "tooltip": "111"
+      }
+    ]
+  }
+]
